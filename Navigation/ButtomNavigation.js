@@ -4,8 +4,9 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { createDrawerNavigator } from "@react-navigation/drawer";
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+
 
 
 import HomeScreen from "./../screens/HomeScreen";
@@ -19,7 +20,7 @@ const globalScreenOptions = {
 const HomeStack = createStackNavigator();
 const FeedStack = createStackNavigator();
 
-const Tabs = createBottomTabNavigator();
+const Tabs = createMaterialBottomTabNavigator();
 
 const HomeStackScreen = () => (
   <HomeStack.Navigator
@@ -57,10 +58,21 @@ const ButtomNavigation = () => {
 
     <Tabs.Screen
       name="Home"
-      options={{ title: "Home" }}
       component={HomeStackScreen}
+      options={{
+        tabBarLabel: 'Home',
+        tabBarIcon: ({ color }) => (
+          <MaterialCommunityIcons name="home" color={color} size={26} />
+        ),
+      }}
     />
-    <Tabs.Screen name="Task" component={FeedStackScreen} />
+    <Tabs.Screen name="Task" component={FeedStackScreen} 
+     options={{
+      tabBarLabel: 'Account',
+      tabBarIcon: ({ color }) => (
+        <MaterialCommunityIcons name="account" color={color} size={26} />
+      ),
+    }}/>
   </Tabs.Navigator>
   );
 };

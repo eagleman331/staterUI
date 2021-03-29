@@ -12,12 +12,16 @@ import HomeScreen from "./screens/HomeScreen";
 import FeedScreen from "./screens/FeedScreen";
 import ButtomNavigation from "./Navigation/ButtomNavigation";
 import DrawerNavigation from "./Navigation/DrawerNavigation";
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const Drawer = createDrawerNavigator();
 
 export default function App() {
   return (
     <NavigationContainer>
+      <SafeAreaProvider>
+
+
       <TaskContextProvider>
 
 
@@ -26,6 +30,7 @@ export default function App() {
         <Drawer.Screen name="Profile" component={DrawerNavigation} />
       </Drawer.Navigator>
       </TaskContextProvider>
+      </SafeAreaProvider>
      
     </NavigationContainer>
   );
